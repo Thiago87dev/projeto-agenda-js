@@ -1,0 +1,19 @@
+<% Controle de fluxo (if, for...) %>
+<%= Imprime escapando caractere %>
+<%- Imprime sem escapar caractere %>
+<%# Comentario %>
+<%- include(CAMINHO/ARQUIVO) %>
+
+
+if ejs
+<% if( typeof titulo !== 'undefined') { %> 
+    <%- titulo %> <br>
+
+<% } else { %>
+    O titulo não foi enviado <br>
+<% } %>
+
+repetição ejs
+<% numeros.forEach(num => { %>
+    <%= num %> <br>
+<% }) %>
