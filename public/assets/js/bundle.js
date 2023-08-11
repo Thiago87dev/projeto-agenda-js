@@ -48,21 +48,52 @@ var Contato = /*#__PURE__*/function () {
       var nomeInput = el.querySelector('input[name="nome"]');
       var emailInput = el.querySelector('input[name="email"]');
       var telefoneInput = el.querySelector('input[name="telefone"]');
-      console.log(nomeInput, emailInput, telefoneInput);
       var error = false;
+      var elementoNome = this.form.querySelector('.error-nome');
+      var elementoEmail = this.form.querySelector('.error-email');
       if (!nomeInput.value) {
-        alert('O campo nome é obrigatorio');
+        if (elementoNome) {
+          elementoNome.remove();
+        }
+        var div = document.createElement('div');
+        div.innerHTML = 'Nome é obrigatorio';
+        div.classList.add('text-danger');
+        div.classList.add('error-nome');
+        nomeInput.insertAdjacentElement('afterend', div);
         error = true;
+      } else {
+        if (elementoNome) {
+          elementoNome.remove();
+        }
       }
       if (emailInput.value && !validator__WEBPACK_IMPORTED_MODULE_0___default().isEmail(emailInput.value)) {
-        alert('Email invalido');
+        if (elementoEmail) {
+          elementoEmail.remove();
+        }
+        var _div = document.createElement('div');
+        _div.innerHTML = 'Email invalido';
+        _div.classList.add('text-danger');
+        _div.classList.add('error-email');
+        emailInput.insertAdjacentElement('afterend', _div);
         error = true;
+      } else {
+        if (elementoEmail) {
+          elementoEmail.remove();
+        }
       }
       if (!emailInput.value && !telefoneInput.value) {
         alert('É preciso ter pelo menos um contato: email ou telefone');
         error = true;
       }
-      if (!error) el.submit();
+      if (!error) {
+        el.submit();
+        if (elementoNome) {
+          elementoNome.remove();
+        }
+        if (elementoEmail) {
+          elementoEmail.remove();
+        }
+      }
     }
   }]);
   return Contato;
